@@ -29,4 +29,5 @@ jobs:
              echo 'hello'
              pwd
              ls -l -a
+             sleep 20
         shell: bash
