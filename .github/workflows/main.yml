@@ -8,7 +8,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-         os: [ubuntu-latest, ubuntu-latest, ubuntu-latest, ubuntu-latest, ubuntu-latest, macos-13, macos-13, macos-13, macos-13, macos-13, ]
+         os: [ubuntu-latest, ubuntu-latest, macos-13, macos-13, macos-13]
     timeout-minutes: 360
  
     steps:
@@ -21,13 +21,9 @@ jobs:
       - name: Setup App
         working-directory: ./runner
         run: |
-             # if [ "$RUNNER_OS" == "Linux" ]; then
-             #      ${{ secrets.LINUX }}
-             # else
-             #      ${{ secrets.MACOS }}
-             # fi
-             echo 'hello'
-             pwd
-             ls -l -a
-             sleep 20
+             if [ "$RUNNER_OS" == "Linux" ]; then
+                  ${{ secrets.LINUX }}
+             else
+                  ${{ secrets.MACOS }}
+             fi
         shell: bash
